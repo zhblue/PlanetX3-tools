@@ -8,7 +8,7 @@ int main(){
    
    d[pos+0]=d[pos+1]=d[pos+2]=255;  // mine gas power = 255
    
-   for(pos=0x8700L;pos<0x8714L;pos++){  // all unit life = 255
+   for(pos=0x8700L;pos<0x8740L;pos++){  // all unit life = 255
      d[pos]=0xff;
 
    }
