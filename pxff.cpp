@@ -1,8 +1,9 @@
 #include<stdio.h>
-int main(){
+int main(int argc,char ** argv){
    unsigned char d[36884];
    long int i,j,base;
    long pos=36867L;
+   unsigned char m;
    FILE * fp=fopen("savegame.dat","rb");
    fread(d,1,36884L,fp);
 
@@ -24,12 +25,13 @@ int main(){
    }
    /* secure the base  */
 
-   if(i<0x8000){
-   printf("Base located on : %d,%d \n",i%256,i/256);
+   if(i<0x8000&&argc>=2){
+      printf("Base located on : %x \n",base);
+      sscanf(argv[1],"%x",&m);
       for(i=-8;i<=8;i++){
 	 for(j=-8;j<=8;j++){
 		if (i*i+j*j>36){
-		    d[base+i*256+j]=0x0f;
+		    d[base+i*256+j]=m;
 		}
 
 	 }
