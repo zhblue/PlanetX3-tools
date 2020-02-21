@@ -1,4 +1,3 @@
-/*written in turbo c 2.0 */
 #include<stdio.h>
 int main(){
    unsigned char d[36884];
@@ -24,7 +23,9 @@ int main(){
 	}
    }
    /* secure the base  */
+
    if(i<0x8000){
+   printf("Base located on : %d,%d \n",i%256,i/256);
       for(i=-8;i<=8;i++){
 	 for(j=-8;j<=8;j++){
 		if (i*i+j*j>36){
@@ -49,5 +50,6 @@ int main(){
    fp=fopen("savegame.dat","wb");
    fwrite(d,1,36884L,fp);
    fclose(fp);
+   printf("Written by zhblue . https://github.com/zhblue/PlanetX3-Tools\n");
    return 0;
 }
