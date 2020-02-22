@@ -29,13 +29,23 @@ map of savegame.dat
 
 0x9000 - 0x9001  ~ unknown area
 
-0x9002 - Difficulty 0 1 2
+0x9002 -           Difficulty 0 1 2
 
-0x9003 - Mine
+0x9003 -           Mine
 
-0x9004 - Gas
+0x9004 -           Gas
 
-0x9005 - Energy
+0x9005 -           Energy
 
-0x9006 - 0x9014 ~ unknown area
+0x9006 - 0x900f ~ unknown area
+
+0x9010 -          ms
+
+0x9011 -        ~ unknown area
+
+0x9012 -          Second
+
+0x9013 -          Minute
+
+0x9014 -          Hour
 
