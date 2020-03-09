@@ -19,8 +19,12 @@
 <div>Pen:    
 <span id="mypen" class="p7" style="width:16px;height:16px" onclick="changePen()" >&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 
- Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a></div>
-<input type="button" onclick="download()" value="Save it!">
+ Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a>
+	<input type="button" onclick="cheat()" value="Cheat!">
+	<input type="button" onclick="download()" value="Save it!">
+	
+	</div>
+
 <?php 
 $file="savegame.dat";
 if(isset($_FILES["file"])){
@@ -100,6 +104,14 @@ function draw2(){
 	}
 	
 }
+	function cheat(){
+		var pos=36867;
+		mymap[pos+0]=mymap[pos+1]=mymap[pos+2]=255;
+		for(pos=0x8700;pos<0x873f;pos++){
+		     mymap[pos]=0xff;
+		}
+	
+	}
 var drawing=false;
 $(document).ready(function(){
 	$("td").attr('unselectable', 'on');
@@ -127,6 +139,7 @@ $(document).ready(function(){
 		
 	});
 });
+	
 </script>
 </body>
 
