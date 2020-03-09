@@ -20,6 +20,7 @@
 <span id="mypen" class="p7" style="width:16px;height:16px" onclick="changePen()" >&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 
  Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a></div>
+<input type="button" onclick="download()" value="test">
 <?php 
 $file="savegame.dat";
 if(isset($_FILES["file"])){
@@ -46,7 +47,7 @@ fclose($file_pointer);
 
 	echo "<tr>";
 	for($j=0;$j<256;$j++){
-		echo "<td title='$j $i' class='p".hexdec(bin2hex($data[$i*256+$j]))."' />";
+		echo "<td index='".($i*256+$j)."' title='$j $i' class='p".hexdec(bin2hex($data[$i*256+$j]))."' />";
 
 	}
 	echo "</tr>";
@@ -55,23 +56,19 @@ fclose($file_pointer);
 ?>
 </table>
 <script src="jquery.min.js" ></script>
+<script src="FileSaver.min.js" ></script>
 <script>
-var map=[
+var mymap=new Uint8Array(36884);
 <?php 
- $var="";
  for($i=0;$i<36884;$i++){
-	$var.=hexdec(bin2hex($data[$i]));
-	if($i<36883) $var.=",";
-	if(0==($i % 256)){
-		echo $var;
-		echo "\n";
-		$var="";		
-	}
+	echo "mymap[".$i."]=".hexdec(bin2hex($data[$i])).";";
  }
- echo $var;
 ?>
-];
 var currentPen=7;
+function download(){
+    var blob = new Blob([mymap ], {type: "application/vnd.openblox.game-binary"});
+    saveAs(blob, "savegame.dat");
+}
 function changePen(){
   currentPen++;
   if(currentPen>255) currentPen=0;
@@ -106,11 +103,13 @@ function draw2(){
 $(document).ready(function(){
 	$("td").click(function(){
 		$(this).attr("class","p"+currentPen);
+		mymap[$(this).attr("index")]=currentPen;
 		
 	});
 
 	$("td").dblclick(function(){
 		$(this).attr("class","p0");
+		mymap[$(this).attr("index")]=0;
 		
 	});
 });
