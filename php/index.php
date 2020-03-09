@@ -1,7 +1,7 @@
 <html>
 
 <head>
-
+<title>Cheat tools & Savegame.dat Map Editor for PlanetX3 </title>
 <style> </style>
 <link rel="stylesheet" type="text/css" href="map.css" />
 </head>
