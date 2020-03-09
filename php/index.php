@@ -9,11 +9,17 @@
 
 
 <body>
+<div>
 <form action="index.php" method="post" enctype="multipart/form-data">
     <label for="file">Upload your Savegame.dat:<label>
     <input type="file" name="file" id="file">
     <input type="submit" name="submit" value="Upload">
 </form>
+</div>
+<div>Pen:    
+<span id="mypen" class="p7" style="width:16px;height:16px" onclick="changePen()" >&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+
+ Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a></div>
 <?php 
 $file="savegame.dat";
 if(isset($_FILES["file"])){
@@ -65,6 +71,12 @@ var map=[
  echo $var;
 ?>
 ];
+var currentPen=7;
+function changePen(){
+  currentPen++;
+  if(currentPen>255) currentPen=0;
+  $("#mypen").attr("class","p"+currentPen);  
+}
 function draw(){
 	for(var i=0;i<256;i++){
 		var j=i%16;
@@ -91,6 +103,13 @@ function draw2(){
 	}
 	
 }
+$(document).ready(function(){
+	$("td").click(function(){
+		$(this).attr("class","p"+currentPen);
+		
+	});
+
+});
 </script>
 </body>
 
