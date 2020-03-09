@@ -109,6 +109,10 @@ $(document).ready(function(){
 		
 	});
 
+	$("td").dblclick(function(){
+		$(this).attr("class","p0");
+		
+	});
 });
 </script>
 </body>
