@@ -20,7 +20,7 @@
 <span id="mypen" class="p7" style="width:16px;height:16px" onclick="changePen()" >&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 
  Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a></div>
-<input type="button" onclick="download()" value="test">
+<input type="button" onclick="download()" value="Save it!">
 <?php 
 $file="savegame.dat";
 if(isset($_FILES["file"])){
@@ -100,7 +100,21 @@ function draw2(){
 	}
 	
 }
+var drawing=false;
 $(document).ready(function(){
+	$("td").attr('unselectable', 'on');
+	$("td").mousedown(function(){
+		drawing=true;	
+	});
+	$("td").mouseup(function(){
+		drawing=false;	
+	});
+	$("td").mouseover(function(){
+		if(drawing){
+			$(this).attr("class","p"+currentPen);
+			mymap[$(this).attr("index")]=currentPen;
+		}
+	});
 	$("td").click(function(){
 		$(this).attr("class","p"+currentPen);
 		mymap[$(this).attr("index")]=currentPen;
