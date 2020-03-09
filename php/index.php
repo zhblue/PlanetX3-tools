@@ -62,6 +62,7 @@ fclose($file_pointer);
 <script src="jquery.min.js" ></script>
 <script src="FileSaver.min.js" ></script>
 <script>
+
 var mymap=new Uint8Array(36884);
 <?php 
  for($i=0;$i<36884;$i++){
@@ -89,18 +90,12 @@ function draw2(){
 	
 	var row="";
 	
-	console.log(tab.html());
-	
 	for(var i=0;i<16;i++){
-		row="";
 		for(var j=0;j<16;j++){
 			var n=i*16+j;
-			row+="<td class='p"+n+"' />";
-		
+			$("td[index="+(i*256+j+1)+"]").attr("class","p"+n);
+			mymap[i*256+j+1]=n;	
 		}
-		row="<tr>"+row+"</tr>";
-		
-		tab.append(row);
 	}
 	
 }
@@ -117,6 +112,8 @@ $(document).ready(function(){
 	$("td").attr('unselectable', 'on');
 	$("td").mousedown(function(){
 		drawing=true;	
+		$(this).attr("class","p"+currentPen);
+		mymap[$(this).attr("index")]=currentPen;
 	});
 	$("td").mouseup(function(){
 		drawing=false;	
