@@ -9,7 +9,7 @@
 
 
 <body>
-<div>
+<div style="float:left">
 <form action="index.php" method="post" enctype="multipart/form-data">
     <label for="file">Upload your Savegame.dat:<label>
     <input type="file" name="file" id="file">
@@ -24,7 +24,7 @@
 	<input type="button" onclick="download()" value="Save it!">
 	
 	</div>
-
+<div id="pattern"> </div><br>
 <?php 
 $file="savegame.dat";
 if(isset($_FILES["file"])){
@@ -79,10 +79,13 @@ function changePen(){
   if(currentPen>255) currentPen=0;
   $("#mypen").attr("class","p"+currentPen);  
 }
+function changePen2(p){
+  currentPen=p;
+  $("#mypen").attr("class","p"+currentPen);  
+}
 function draw(){
-	for(var i=0;i<256;i++){
-		var j=i%16;
-		document.write(".p"+i+"{<br>width:16px;<br>height:16px;<br>background:url('savemap.png') no-repeat  -"+(j*16)+"px -"+(parseInt(i/16)*16)+"px;<br>}<br>");
+	for(var i=0;i<64;i++){
+		$("#pattern").append('<span id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 	}
 }
 function draw2(){
@@ -135,6 +138,7 @@ $(document).ready(function(){
 		mymap[$(this).attr("index")]=0;
 		
 	});
+	draw();
 });
 	
 </script>
