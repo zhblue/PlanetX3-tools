@@ -24,7 +24,7 @@
 	<input type="button" onclick="download()" value="Save it!">
 	
 	</div>
-<div id="pattern"> </div><br>
+<div id="pattern" > </div><br>
 <?php 
 $file="savegame.dat";
 if(isset($_FILES["file"])){
@@ -84,8 +84,11 @@ function changePen2(p){
   $("#mypen").attr("class","p"+currentPen);  
 }
 function draw(){
-	for(var i=0;i<64;i++){
-		$("#pattern").append('<span id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;');
+	for(var i=0;i<256;i++){
+		$("#pattern").append('<span title="'+i+'" id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;');
+		if(i%64==63){
+			$("#pattern").append('<br>');
+		}
 	}
 }
 function draw2(){
@@ -111,6 +114,12 @@ function draw2(){
 	
 	}
 var drawing=false;
+const big=[36,38,104,106,118,120,122,124,126,138,184,186,188,204,206,216,218,232];
+function setIndexWithPen(index,pen){
+	$("td[index="+(index)+"]").attr("class","p"+pen);	
+	mymap[index]=pen;
+
+}
 $(document).ready(function(){
 	$("td").attr('unselectable', 'on');
 	$("td").mousedown(function(){
@@ -128,8 +137,13 @@ $(document).ready(function(){
 		}
 	});
 	$("td").click(function(){
-		$(this).attr("class","p"+currentPen);
-		mymap[$(this).attr("index")]=currentPen;
+		var i=parseInt($(this).attr("index"));
+		setIndexWithPen(i,currentPen);
+		if(big.includes(currentPen)){
+		   setIndexWithPen(i+1,currentPen+1);
+		   setIndexWithPen(i+256,currentPen+8);
+		   setIndexWithPen(i+257,currentPen+9);
+		}
 		
 	});
 
