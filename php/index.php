@@ -3,7 +3,7 @@
 <head>
 <title>Cheat tools & Savegame.dat Map Editor for PlanetX3 </title>
 <style> </style>
-<link rel="stylesheet" type="text/css" href="map.css" />
+<link rel="stylesheet" type="text/css" href="map.css?v=0.2" />
 </head>
 
 
@@ -85,7 +85,7 @@ function changePen2(p){
 }
 function draw(){
 	for(var i=0;i<64;i++){
-		$("#pattern").append('<span id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+		$("#pattern").append('<span id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;');
 	}
 }
 function draw2(){

@@ -1292,3 +1292,12 @@ table{
 span{
 	font-size:12;
 }
+
+#pattern{
+	left: 0;
+	position: fixed;
+	bottom: 5 ;
+	width: 100%;
+	z-index: 100;
+	background-color:black;
+}
