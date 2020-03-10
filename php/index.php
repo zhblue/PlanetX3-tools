@@ -63,12 +63,13 @@ fclose($file_pointer);
 <script src="FileSaver.min.js" ></script>
 <script>
 
-var mymap=new Uint8Array(36884);
+var mymap=new Uint8Array([
 <?php 
  for($i=0;$i<36884;$i++){
-	echo "mymap[".$i."]=".hexdec(bin2hex($data[$i])).";";
+	echo hexdec(bin2hex($data[$i]));
+	if ($i<36883) echo ",";
  }
-?>
+?>]);
 var currentPen=7;
 function download(){
     var blob = new Blob([mymap ], {type: "application/vnd.openblox.game-binary"});
