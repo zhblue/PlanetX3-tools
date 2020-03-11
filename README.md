@@ -26,7 +26,9 @@ map of savegame.dat
 
 0x0000 - 0x7fff  256x128 tile codes top-left=0x0000
 
-0x8000 - 0x86ff  ~ unknown area
+0x8000 - 0x8013  mark of unit is alive !
+
+0x8014 - 0x86ff  ~ unknown area
 
 0x8700 - 0x873f  life values for units and constructions
 
