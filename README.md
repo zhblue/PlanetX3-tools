@@ -26,9 +26,17 @@ map of savegame.dat
 
 0x0000 - 0x7fff  256x128 tile codes top-left=0x0000
 
-0x8000 - 0x8013  mark of unit is alive !
+0x8000 - 0x8013  unit type 01:builder 02:tank 03:heavy tank
 
-0x8014 - 0x86ff  ~ unknown area
+0x8014 - 0x809f  constructions type 14:Headquarters 15:Radar 16 19:factory 03:heavy tank
+
+0x8100 - 0x8113  unit X position
+
+0x8200 - 0x8213  unit Y position
+
+0x8300 - 0x8313  constructions X position
+
+0x8400 - 0x8413  constructions Y position
 
 0x8700 - 0x873f  life values for units and constructions
 
