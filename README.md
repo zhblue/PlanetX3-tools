@@ -32,7 +32,11 @@ map of savegame.dat
 
 0x8100 - 0x8113  unit X position
 
+0x8180 -         enemy constructions X position
+
 0x8200 - 0x8213  unit Y position
+
+0x8280 -         enemy construction Y position
 
 0x8300 - 0x8313  constructions X position
 
