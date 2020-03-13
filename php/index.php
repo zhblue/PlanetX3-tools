@@ -3,7 +3,7 @@
 <head>
 <title>Cheat tools & Savegame.dat Map Editor for PlanetX3 </title>
 <style> </style>
-<link rel="stylesheet" type="text/css" href="map.css?v=0.2" />
+<link rel="stylesheet" type="text/css" href="map.css?v=0.4" />
 </head>
 
 
@@ -88,8 +88,8 @@ function changePen2(p){
 }
 function draw(){
 	for(var i=0;i<256;i++){
-		$("#pattern").append('<span title="'+i+'" id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;');
-		if(i%64==63){
+		$("#pattern").append('<span title="'+i+'" id="mypen" class="p'+i+'" style="width:16px;height:16px" onclick="changePen2('+i+')" >&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+		if(i%8==7){
 			$("#pattern").append('<br>');
 		}
 	}
@@ -138,10 +138,14 @@ function draw2(){
 	}
 var drawing=false;
 const big=[36,38,104,106,118,120,122,124,126,138,184,186,188,204,206,216,218,232];
-const ECT=0x8080;
-const ECX=0x8180;
-const ECY=0x8280;
-const ECH=0x8780;
+const ECT=0x8080; // enemy construction type
+const ECX=0x8180; // enemy construction X
+const ECY=0x8280;// enemy construction Y
+const ECH=0x8780;// enemy construction Health
+const UT=0x8000;//unit type
+const UX=0x8100;//unit x
+const UY=0x8200;//unit y
+const UH=0x8700;//unit health
 
 function setXYwithPen(x,y,pen){
 	setIndexWithPen(x+y*256,pen);
@@ -189,6 +193,15 @@ $(document).ready(function(){
 	           mymap[ECX+num]=X(i);
 	           mymap[ECY+num]=Y(i);
 	           mymap[ECH+num]=0xFA;
+ 
+		}
+		
+		if(currentPen==140){ // add new enemy HQ 
+		   var num=nextNum(UT);
+	           mymap[UT+num]=0x03;
+	           mymap[UX+num]=X(i);
+	           mymap[UY+num]=Y(i);
+	           mymap[UH+num]=0xFF;
  
 		}
 		
