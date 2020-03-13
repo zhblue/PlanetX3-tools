@@ -28,7 +28,9 @@ map of savegame.dat
 
 0x8000 - 0x8013  unit type 01:builder 02:tank 03:heavy tank
 
-0x8014 - 0x809f  constructions type 14:Headquarters 15:Radar 16 19:factory 03:heavy tank
+0x8014 - constructions type 14:Headquarters 15:Radar 16 19:factory 03:heavy tank
+
+0x8080 - enemy constructions type  21:HQ 22:Gun Tower
 
 0x8100 - 0x8113  unit X position
 
