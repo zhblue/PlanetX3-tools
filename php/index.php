@@ -21,6 +21,7 @@
 
  Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a>
 	<input type="button" onclick="cheat()" value="Cheat!">
+	<input type="button" onclick="army()" value="Army!">
 	<input type="button" onclick="download()" value="Save it!">
 	
 	</div>
@@ -59,6 +60,7 @@ fclose($file_pointer);
  }
 ?>
 </table>
+<br><br><br><br>
 <script src="jquery.min.js" ></script>
 <script src="FileSaver.min.js" ></script>
 <script>
@@ -106,6 +108,26 @@ function draw2(){
 	}
 	
 }
+	function army(){
+		var pos=0x8000;
+		for(pos=0x8002;pos<0x8013;pos++){
+		     mymap[pos]=0x03; //heavy tank
+		}
+		pos=0x8100;
+		var x= mymap[pos];
+		pos=0x8200;
+		var y= mymap[pos];
+		for(pos=0x8102;pos<0x8113;pos++){
+		     x++;
+		     setXYwithPen(x,y,140);
+		     mymap[pos]=x;
+		
+		}
+		for(pos=0x8202;pos<0x8213;pos++){
+		     mymap[pos]=y;
+		}
+		cheat();	
+	}
 	function cheat(){
 		var pos=36867;
 		mymap[pos+0]=mymap[pos+1]=mymap[pos+2]=255;
@@ -116,11 +138,27 @@ function draw2(){
 	}
 var drawing=false;
 const big=[36,38,104,106,118,120,122,124,126,138,184,186,188,204,206,216,218,232];
+const ECT=0x8080;
+const ECX=0x8180;
+const ECY=0x8280;
+const ECH=0x8780;
+
+function setXYwithPen(x,y,pen){
+	setIndexWithPen(x+y*256,pen);
+}
 function setIndexWithPen(index,pen){
 	$("td[index="+(index)+"]").attr("class","p"+pen);	
 	mymap[index]=pen;
 
 }
+function nextNum(base){
+	var num=0;
+	while(mymap[base+num]>0) num++;
+        return num;
+}
+function X(index) { return index % 256};
+function Y(index) { return Math.floor(index / 256) };
+var nextHQ=0;
 $(document).ready(function(){
 	$("td").attr('unselectable', 'on');
 	$("td").mousedown(function(){
@@ -144,6 +182,14 @@ $(document).ready(function(){
 		   setIndexWithPen(i+1,currentPen+1);
 		   setIndexWithPen(i+256,currentPen+8);
 		   setIndexWithPen(i+257,currentPen+9);
+		}
+		if(currentPen==204){ // add new enemy HQ 
+		   var num=nextHQ++ %3;
+	           mymap[ECT+num]=21;
+	           mymap[ECX+num]=X(i);
+	           mymap[ECY+num]=Y(i);
+	           mymap[ECH+num]=0xFA;
+ 
 		}
 		
 	});
