@@ -137,7 +137,7 @@ function draw2(){
 	
 	}
 var drawing=false;
-const big=[36,38,104,106,118,120,122,124,126,138,184,186,188,204,206,216,218,232];
+const big=[36,38,104,106,108,120,122,124,126,136,138,184,186,188,190,204,206,216,218,232];
 const ECT=0x8080; // enemy construction type
 const ECX=0x8180; // enemy construction X
 const ECY=0x8280;// enemy construction Y
