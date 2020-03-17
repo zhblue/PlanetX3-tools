@@ -142,6 +142,14 @@ const ECT=0x8080; // enemy construction type
 const ECX=0x8180; // enemy construction X
 const ECY=0x8280;// enemy construction Y
 const ECH=0x8780;// enemy construction Health
+	
+const CT=0x8014; //  construction type
+const CX=0x8114; //  construction X
+const CY=0x8214;//  construction Y
+const CH=0x8714;//  construction Health
+const MS=0x8910;//  Missile fill up
+
+	
 const UT=0x8000;//unit type
 const UX=0x8100;//unit x
 const UY=0x8200;//unit y
@@ -193,16 +201,22 @@ $(document).ready(function(){
 	           mymap[ECX+num]=X(i);
 	           mymap[ECY+num]=Y(i);
 	           mymap[ECH+num]=0xFA;
- 
 		}
 		
-		if(currentPen==140){ // add new enemy HQ 
+		if(currentPen==140){ // add new heavy tank
 		   var num=nextNum(UT);
 	           mymap[UT+num]=0x03;
 	           mymap[UX+num]=X(i);
 	           mymap[UY+num]=Y(i);
 	           mymap[UH+num]=0xFF;
- 
+		}
+		if(currentPen==138){ // add new missile silo
+		   var num=nextNum(CT);
+	           mymap[CT+num]=0x03;
+	           mymap[CX+num]=X(i);
+	           mymap[CY+num]=Y(i);
+	           mymap[CH+num]=0xFF;
+		   mymap[MS+num]=0x01;  // missile fill up
 		}
 		
 	});
