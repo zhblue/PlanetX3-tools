@@ -52,6 +52,8 @@ map of savegame.dat
 
 0x87c0 - 0x8fff  ~ unknown area
 
+0x8910 - missile silo fill up
+
 0x9000 - 0x9001  ~ unknown area
 
 0x9002 -           Difficulty 0 1 2
