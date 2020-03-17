@@ -9,6 +9,7 @@
 
 
 <body>
+<a href="http://www.the8bitguy.com/product/planet-x3-for-ms-dos-computers/" target="_blank"> Buy the game now !</a>
 <div style="float:left">
 <form action="index.php" method="post" enctype="multipart/form-data">
     <label for="file">Upload your Savegame.dat:<label>
