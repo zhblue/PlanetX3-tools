@@ -212,7 +212,7 @@ $(document).ready(function(){
 		}
 		if(currentPen==138){ // add new missile silo
 		   var num=nextNum(CT);
-	           mymap[CT+num]=0x03;
+	           mymap[CT+num]=0x1A;
 	           mymap[CX+num]=X(i);
 	           mymap[CY+num]=Y(i);
 	           mymap[CH+num]=0xFF;
