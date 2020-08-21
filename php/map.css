@@ -1288,7 +1288,7 @@ table{
 	border-spacing:0;
 	width: 4096px;
 	height: 2048px;
-	left:100px
+	float:right;
 }
 span{
 	font-size:12;

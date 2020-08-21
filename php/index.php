@@ -3,7 +3,7 @@
 <head>
 <title>Cheat tools & Savegame.dat Map Editor for PlanetX3 </title>
 <style> </style>
-<link rel="stylesheet" type="text/css" href="map.css?v=0.4" />
+<link rel="stylesheet" type="text/css" href="map.css?v=0.51" />
 </head>
 
 
@@ -24,6 +24,7 @@
 	<input type="button" onclick="cheat()" value="Cheat!">
 	<input type="button" onclick="army()" value="Army!">
 	<input type="button" onclick="download()" value="Save it!">
+	<input type="button" onclick="$('#pattern').toggle()" value="Hide/Show">
 	
 	</div>
 <div id="pattern" > </div><br>
@@ -46,7 +47,7 @@ fclose($file_pointer);
 //echo $file;
 ?>
 
-<table id="map" border="0" cellspacing="0">
+<div style="width:4224px"><table id="map" border="0" cellspacing="0">
 
 <?php 
  for($i=0;$i<128;$i++){
@@ -61,6 +62,7 @@ fclose($file_pointer);
  }
 ?>
 </table>
+</div>
 <br><br><br><br>
 <script src="jquery.min.js" ></script>
 <script src="FileSaver.min.js" ></script>
