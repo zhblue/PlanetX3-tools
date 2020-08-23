@@ -13,20 +13,26 @@
 <div style="float:left">
 <form action="index.php" method="post" enctype="multipart/form-data">
     <label for="file">Upload your Savegame.dat:<label>
-    <input type="file" name="file" id="file">
+    <input type="file" placeholder="Savegame.dat" name="file" id="file">
     <input type="submit" name="submit" value="Upload">
 </form>
 </div>
-<div>Pen:    
+Pen:    
 <span id="mypen" class="p7" style="width:16px;height:16px" onclick="changePen()" >&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 
- Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">https://github.com/zhblue/PlanetX3-tools</a>
+ Source:<a href="https://github.com/zhblue/PlanetX3-tools" target="_blank">GitHub</a>
+	<br>
 	<input type="button" onclick="cheat()" value="Cheat!">
 	<input type="button" onclick="army()" value="Army!">
 	<input type="button" onclick="download()" value="Save it!">
 	<input type="button" onclick="$('#pattern').toggle()" value="Hide/Show">
+	<input type="button" onclick="mymap[0x9002]=0;" value="Easy">
+	<input type="button" onclick="mymap[0x9002]=1;" value="Normal">
+	<input type="button" onclick="mymap[0x9002]=2;" value="Hard">
+	<input type="button" onclick="draw2()" value="Draw2">
 	
 	</div>
+</div>
 <div id="pattern" > </div><br>
 <?php 
 $file="savegame.dat";
@@ -102,9 +108,9 @@ function draw2(){
 	
 	var row="";
 	
-	for(var i=0;i<16;i++){
-		for(var j=0;j<16;j++){
-			var n=i*16+j;
+	for(var i=0;i<32;i++){
+		for(var j=0;j<8;j++){
+			var n=i*8+j;
 			$("td[index="+(i*256+j+1)+"]").attr("class","p"+n);
 			mymap[i*256+j+1]=n;	
 		}
