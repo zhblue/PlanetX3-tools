@@ -54,7 +54,9 @@ map of savegame.dat
 
 0x8910 - missile silo fill up
 
-0x9000 - 0x9001  ~ unknown area
+0x9000 - 0x31 = green  0x32= ice  0x33=desert
+
+0x9001 - current selected unit
 
 0x9002 -           Difficulty 0 1 2
 
